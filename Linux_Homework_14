@@ -1,0 +1,18 @@
+[ec2-user@ip-172-31-33-20 Andrii_Boiko]$ vim sleeper.sh
+[ec2-user@ip-172-31-33-20 Andrii_Boiko]$ cat sleeper.sh
+#!/bin/bash
+for i in {1..10}
+do
+date +"%H:%M:%S"
+ps -ef | tail +2 | wc -l
+sleep 1
+done
+
+cat /proc/cpuinfo > sleep.txt
+cat /etc/os-release | grep '^NAME=' >> sleep.txt
+cat /etc/os-release | grep '^NAME=' | cut -d'=' -f2 | tr -d '"'
+
+for i in {50..100}
+do
+touch $i.txt
+done
